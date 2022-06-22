@@ -158,7 +158,7 @@ void arrow_headed_line(float x1, float y1, float x2, float y2, const char* direc
 		glEnd();
 
 	}
-	else {
+	else if (direc=="right") {
 		glBegin(GL_TRIANGLES);
 		glVertex2f(x2, y2);
 		glVertex2f(x2 + 10, y2 + 5);
@@ -169,6 +169,21 @@ void arrow_headed_line(float x1, float y1, float x2, float y2, const char* direc
 		glVertex2f(x2, y2);
 		glEnd();
 
+	}
+	else if (direc=="down") {
+		glBegin(GL_TRIANGLES);
+		glVertex2f(x2, y2);
+		glVertex2f(x2 + 5, y2 + 10);
+		glVertex2f(x2 - 5, y2 + 10);
+		glEnd();
+		glBegin(GL_LINES);
+		glVertex2f(x1, y1);
+		glVertex2f(x2, y2);
+		glEnd();
+
+	}
+	else {
+		return;
 	}
 	
 	
@@ -202,6 +217,16 @@ void draw_rectangle(float x, float y, float width, float height)
 	glVertex2f(x + width, y);
 	glVertex2f(x + width, y + height);
 	glVertex2f(x , y + height);
+	glEnd();
+}
+void draw_solid_rectangle(float x, float y, float width, float height)
+{
+
+	glBegin(GL_POLYGON);
+	glVertex2f(x, y);
+	glVertex2f(x + width, y);
+	glVertex2f(x + width, y + height);
+	glVertex2f(x, y + height);
 	glEnd();
 }
 
@@ -443,11 +468,71 @@ void display() {
 	glColor3f(1,1,1);
 	draw_solid_round_corner_rectangle(1180, 480, 90, 140, 3);
 
+	glColor3f(0, 0, 0);
+	for (int i = 600; i > 550; i -= 20)
+	{
+		draw_solid_round_corner_rectangle(1195, i, 60, 7, 2);
+	}
+
+	glColor3f(1, 1, 1);
+	draw_ellipse(1225, 530, 6, 6, 100);
+	draw_solid_ellipse_with_outline(1225, 530, 6, 6, 0, 0.5, c);
+
+	glColor3f(0.64, 0.17, 1.35);
+	draw_ellipse(1225, 515, 4, 4, 100);
+
+	glColor3f(0,0,0);
+	glRasterPos2i(1180, 450);
+	printString((char*)"CONTAINS APP LOGIC");
+	glRasterPos2i(1205, 430);
+	printString((char*)"PYTHON JS PHP");
+	glColor3f(0.70196, 0.70196, 0.70196);
+	draw_solid_round_corner_rectangle(1180, 360, 120, 50, 0);
+	glColor3f(0, 0, 0);
+	glRasterPos2i(1190, 380);
+	printString((char*)"WEB-SERVERS");
+
+	glColor3f(0, 0, 0);
+	arrow_headed_line(1140, 385,1170, 385, left);
+	arrow_headed_line(1140, 385, 1140, 340, "down");
+	arrow_headed_line(1340, 385, 1310, 385, right);
+	arrow_headed_line(1340, 385, 1340, 340, "down");
+
+	drawLine(1230, 330, 1230, 250);
+	drawLine(1250, 330, 1250, 250);
+	arrow_headed_line(1230, 250, 1210, 250, right);
+	arrow_headed_line(1250, 250, 1270, 250, left);
+
+
+
+
+
+	
+
+
+
+
 	//Monitor at client
 	glColor3f(0.64, 0.17, 1.35);
 	draw_solid_round_corner_rectangle(667, 525, 180, 150, 3);
+
+	glColor3f(0.64, 0.17, 2);
+	draw_solid_rectangle(747, 505, 30, 20);
+	glColor3f(0, 0, 0);
+	draw_solid_round_corner_rectangle(733, 494, 60, 7, 1);
+
 	glColor3f(1, 1, 1);
 	draw_solid_round_corner_rectangle(677, 546, 160, 120, 3);
+
+
+	//Mobile phone design
+	glColor3f(0.77, 0, 0.77);
+	draw_solid_round_corner_rectangle(800, 500, 75, 100, 2);
+	glColor3f(1, 1, 1);
+	draw_solid_round_corner_rectangle(805, 515, 65, 80, 2);
+
+
+
 
 
 
