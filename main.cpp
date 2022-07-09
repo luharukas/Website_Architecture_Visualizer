@@ -4,6 +4,12 @@
 #include "math.h"
 #include<string.h>
 #include<stdlib.h>
+#include<chrono>
+#include<thread>
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono; // nanoseconds, system_clock, seconds
+
+
 
 // For Print the text
 GLuint fontOffset;
@@ -38,6 +44,9 @@ GLubyte letters[][13] = {
 {0x00, 0x00, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x3c, 0x3c, 0x66, 0x66, 0xc3},
 {0x00, 0x00, 0xff, 0xc0, 0xc0, 0x60, 0x30, 0x7e, 0x0c, 0x06, 0x03, 0x03, 0xff}
 };
+
+float text1x = 250;
+int timex = 0;
 
 void makeRasterFont(void)
 {
@@ -331,20 +340,10 @@ void draw_solid_ellipse_with_outline(float x, float y, float a, float b, float a
 
 
 
+void fixed_frame() {
 
 
-
-
-
-
-
-
-//Dispaly Function
-void display() {
-
-	glClear(GL_COLOR_BUFFER_BIT); // Make the Dispaly window white
-
-
+	glColor3f(0, 0, 0);
 	glRasterPos2i(600, 775);
 	printString((char*)"WEBSITE ARCHITECTURE VISUALIZER");
 
@@ -437,7 +436,7 @@ void display() {
 	float c[] = { 0.64, 0.17, 1.35 };
 
 	glColor3f(0.64, 0.17, 1.35);
-	draw_ellipse(1312,230,37,10,200);
+	draw_ellipse(1312, 230, 37, 10, 200);
 	glColor3f(1, 1, 1);
 	draw_ellipse(1312, 240, 36, 9, 200);
 	draw_solid_ellipse_with_outline(1312, 240, 37, 10, 0, 1, c);
@@ -464,8 +463,8 @@ void display() {
 
 	//CPU at server
 	glColor3f(0.64, 0.17, 1.35);
-	draw_solid_round_corner_rectangle(1175, 475, 180, 150,3);
-	glColor3f(1,1,1);
+	draw_solid_round_corner_rectangle(1175, 475, 180, 150, 3);
+	glColor3f(1, 1, 1);
 	draw_solid_round_corner_rectangle(1180, 480, 90, 140, 3);
 
 	glColor3f(0, 0, 0);
@@ -481,7 +480,7 @@ void display() {
 	glColor3f(0.64, 0.17, 1.35);
 	draw_ellipse(1225, 515, 4, 4, 100);
 
-	glColor3f(0,0,0);
+	glColor3f(0, 0, 0);
 	glRasterPos2i(1180, 450);
 	printString((char*)"CONTAINS APP LOGIC");
 	glRasterPos2i(1205, 430);
@@ -493,7 +492,7 @@ void display() {
 	printString((char*)"WEB-SERVERS");
 
 	glColor3f(0, 0, 0);
-	arrow_headed_line(1140, 385,1170, 385, left);
+	arrow_headed_line(1140, 385, 1170, 385, left);
 	arrow_headed_line(1140, 385, 1140, 340, "down");
 	arrow_headed_line(1340, 385, 1310, 385, right);
 	arrow_headed_line(1340, 385, 1340, 340, "down");
@@ -502,15 +501,6 @@ void display() {
 	drawLine(1250, 330, 1250, 250);
 	arrow_headed_line(1230, 250, 1210, 250, right);
 	arrow_headed_line(1250, 250, 1270, 250, left);
-
-
-
-
-
-	
-
-
-
 
 	//Monitor at client
 	glColor3f(0.64, 0.17, 1.35);
@@ -530,13 +520,122 @@ void display() {
 	draw_solid_round_corner_rectangle(800, 500, 75, 100, 2);
 	glColor3f(1, 1, 1);
 	draw_solid_round_corner_rectangle(805, 515, 65, 80, 2);
+}
+
+void draw_processing(int pro);
+
+
+int mon_x = 690, mon_y = 640;
+//Dispaly Function
+void display() {
+	for (timex = 0; timex < 5; timex += 0.9) {
+
+		glClear(GL_COLOR_BUFFER_BIT);
+		fixed_frame();
+		if (text1x <= 500) {
+			text1x += 1;
+			glColor3f(0.0, 0.0, 0.0);
+			glRasterPos2i(text1x, 600);
+			printString((char*)"IOIOIIIOOOIIIIOO");
+			//printf("Value od %f", text1x);
+		}
+		if (text1x == 501) {
+			break;
+		}
+		glFlush();
+
+	}
+
+		glClear(GL_COLOR_BUFFER_BIT);
+		fixed_frame();
+		glColor3f(1.0, 1.0, 1.0);
+		glRasterPos2i(text1x, 600);
+		printString((char*)"IOIOIIIOOOIIIIOO");
+		
+		sleep_for(seconds(1));
+
+		glColor3f(0.0, 0.0, 0.0);
+		glRasterPos2i(mon_x, mon_y);
+		printString((char*)"IOIOIOOIIIO");
+		
+
+		sleep_for(seconds(5));
+		glRasterPos2i(mon_x, mon_y-20);
+		printString((char*)"IOIOIOOIIIO");
+
+		sleep_for(seconds(2));
+		glRasterPos2i(807, 570);
+		printString((char*)"IOIOI");
+		glFlush();
+		
+
+		for (float timer = 0; timer < 500; timer += 0.0001)
+		{}
+		sleep_for(seconds(3));
+		text1x = 850;
+		for (timex = 0; timex < 5; timex += 0.5) {
+
+			glClear(GL_COLOR_BUFFER_BIT);
+			fixed_frame();
+			if (text1x <= 1050) {
+				text1x += 0.5;
+				glColor3f(0.0, 0.0, 0.0);
+				glRasterPos2i(text1x, 555);
+				printString((char*)"IOIOIIIOOOII");
+				glRasterPos2i(text1x, 535);
+				printString((char*)"IOIOIIIOOOII");
+				printf("Value od %f", text1x);
+			}
+			if (text1x == 1050) {
+				break;
+			}
+			glFlush();
+
+		}
+
+		printf("Out");
+
+		for (int i = 1; i <=10; i+=1) {
+
+			glClear(GL_COLOR_BUFFER_BIT);
+			fixed_frame();
+			glColor3f(0, 0, 0);
+			glRasterPos2i(1278, 600);
+			printString((char*)"PROCESS..");
+			draw_processing(i);
+			glFlush();
+
+		}
+
+}
+
+void draw_processing(int pro) {
+
+	
+	int x = 1278, y = 570;
+
+	for (int pro_count = 0; pro_count < pro; pro_count++) {
+		if (pro_count % 5 == 0)
+		{
+			y -= 15;
+			x = 1278;
+		}
+		glColor3f(1.0, 1.0, 0.0);
+		draw_ellipse(x, y, 3, 3, 20);
+		x = x + 15;
+		sleep_for(milliseconds(500));
+
+		if (pro_count == 9) {
+			sleep_for(milliseconds(1000));
+			glColor3f(0, 0, 0);
+			glRasterPos2i(1278, 490);
+			printString((char*)"FINISH..");
+		}
+
+	}
 
 
 
-
-
-
-	glFlush();
 }
 
 
@@ -580,7 +679,7 @@ void display() {
 //Main Function
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB| GLUT_DEPTH);
 	glutInitWindowSize(1500, 750);
 	glutInitWindowPosition(0,0);
 	glutCreateWindow("Website Architecture Visualizer");
