@@ -448,6 +448,100 @@ int mon_x = 690, mon_y = 640;
 //Dispaly Function
 void display() {
 
+
+	for (int loop = 1; loop <= 10; loop += 1) {
+		int i;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glColor3f(117/255.0, 6/255.0, 86/255.0);
+		char f[] = "RV INSTITUTE OF TECHNOLOGY AND MANAGEMENT";
+		glRasterPos2f(525.0, 750.0);
+		for (i = 0; f[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, f[i]);
+
+		glColor3f(9/255.0, 237/255.0, 230/255.0);
+		char dn[] = "DEPARTMENT OF COMPUTER SCIENCE AND TECHNOLOGY";
+		glRasterPos2f(505.0, 700.0);
+		for (i = 0; dn[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, dn[i]);
+
+
+		glColor3f(0,0,0);
+		char cn[] = "18CSL67 : COMPUTER GRAPHICS AND LABORATORY WITH MINI PROJECT";
+		glRasterPos2f(430.0, 600.0);
+		for (i = 0; cn[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, cn[i]);
+
+
+		glColor3f(0, 0, 0);
+		char title[] = "TITLE : WEBSITE ARCHITECTURE VISUALIZER";
+		glRasterPos2f(520.0, 500.0);
+		for (i = 0; title[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, title[i]);
+
+
+		glColor3f(0.0, 0.0, 0.0);
+		char t[] = "DESIGNED BY:";
+		glRasterPos2f(200.0, 400.0);
+		for (i = 0; t[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, t[i]);
+
+		glColor3f(0.0, 0.0, 0.0);
+		char s[] = "1RF19CS050";
+		glRasterPos2f(200.0, 350.0);
+		for (i = 0; s[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, s[i]);
+
+		glColor3f(0.0, 0.0, 0.0);
+		char u[] = "SHUBHAM LUHARUKA";
+		glRasterPos2f(350.0, 350.0);
+		for (i = 0; u[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, u[i]);
+
+		glColor3f(0.0, 0.0, 0.0);
+		char v[] = "1RFCS19009";
+		glRasterPos2f(200.0, 300.0);
+		for (i = 0; v[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, v[i]);
+
+		glColor3f(0.0, 0.0, 0.0);
+		char w[] = "AUTRI ACHARYYA";
+		glRasterPos2f(350.0, 300.0);
+		for (i = 0; w[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, w[i]);
+
+
+		glColor3f(0.0, 0.0, 0.0);
+		char gu[] = "PROJRCT GUIDE";
+		glRasterPos2f(1100.0, 400.0);
+		for (i = 0; gu[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, gu[i]);
+
+		glColor3f(0.0, 0.0, 0.0);
+		char gn[] = "DR. ASHA S MANEK";
+		glRasterPos2f(1100.0, 375.0);
+		for (i = 0; gn[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, gn[i]);
+
+		glColor3f(0.0, 0.0, 0.0);
+		char td[] = "PROJRCT CO-ORDINATOR";
+		glRasterPos2f(1100.0, 325.0);
+		for (i = 0; td[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, td[i]);
+
+		glColor3f(0.0, 0.0, 0.0);
+		char tn[] = "DR. DEEPAK N.A.";
+		glRasterPos2f(1100.0, 300.0);
+		for (i = 0; tn[i] != '\0'; i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, tn[i]);
+
+		sleep_for(seconds(1));
+		glFlush();
+
+
+	}
+
+
+
 	glClear(GL_COLOR_BUFFER_BIT);
 	fixed_frame();
 	glColor3f(0.0, 0.0, 0.0);
@@ -520,7 +614,7 @@ void display() {
 			glRasterPos2i(1278, 600);
 			printString((char*)"PROCESS..");
 			draw_processing(i);
-			sleep_for(seconds(5));
+			sleep_for(seconds(1));
 			glFlush();
 		}
 	for (float y=350; y > 275; y -= 0.1) {
@@ -604,15 +698,19 @@ void draw_processing(int pro) {
 		glColor3f(1.0, 1.0, 0.0);
 		draw_ellipse(x, y, 3, 3, 20);
 		x = x + 15;
-		sleep_for(milliseconds(500));
+		sleep_for(milliseconds(50));
 		if (pro_count == 9) {
-			sleep_for(milliseconds(1000));
+			sleep_for(milliseconds(500));
 			glColor3f(0, 0, 0);
 			glRasterPos2i(1278, 490);
 			printString((char*)"FINISH..");
 			sleep_for(seconds(2));
 
 		}}}
+
+
+
+
 
 //Main Function
 int main(int argc, char** argv) {
